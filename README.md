@@ -1,4 +1,5 @@
 # A-simple-2D-shooting-game-
+I would like to commit this game only works on your computer!
 language：chinese         You can use your ‌Web Page Translation Feature to switch the language you are familar.
 
 
