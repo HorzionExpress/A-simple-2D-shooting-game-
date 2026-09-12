@@ -2,8 +2,11 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>精准射手 · 射击训练</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>精准射手 · 射击训练 v2.0</title>
     <script src="https://aisearch-task.bj.bcebos.com/static/tailwindcss-3.4.17.js">
     </script>
     <style>
@@ -14,6 +17,8 @@
             padding: 0;
             box-sizing: border-box;
             user-select: none;
+            -webkit-user-select: none;
+            -webkit-tap-highlight-color: transparent;
         }
         html,
         body {
@@ -22,6 +27,10 @@
             overflow: hidden;
             background: #1a1a1a;
             font-family: 'Segoe UI', sans-serif;
+            touch-action: none;
+            overscroll-behavior: none;
+            position: fixed;
+            inset: 0;
         }
         body {
             cursor: crosshair;
@@ -31,6 +40,7 @@
             width: 100vw;
             height: 100vh;
             background: #1a1a1a;
+            touch-action: none;
         }
         .police-font {
             font-family: 'Bebas Neue', sans-serif;
@@ -86,6 +96,7 @@
             left: 50%;
             transform: translateX(-50%);
             width: 300px;
+            max-width: 70vw;
             height: 20px;
             background: rgba(0, 0, 0, 0.8);
             border: 2px solid #ffc107;
@@ -277,6 +288,8 @@
             pointer-events: none;
             animation: notifyPop 1s ease-out forwards;
             z-index: 300;
+            text-align: center;
+            width: 90%;
         }
         @keyframes notifyPop {
             0% {
@@ -326,6 +339,7 @@
             box-shadow: 0 0 80px rgba(255, 193, 7, 0.3);
             position: relative;
             overflow: hidden;
+            max-width: 90vw;
         }
         @keyframes unlockPulse {
             0% {
@@ -437,6 +451,7 @@
             display: none;
             align-items: center;
             justify-content: center;
+            padding: 12px;
         }
         .tutorial-overlay.active {
             display: flex;
@@ -452,6 +467,7 @@
             overflow-y: auto;
             color: #e0e0e0;
             box-shadow: 0 0 60px rgba(255, 193, 7, 0.15);
+            -webkit-overflow-scrolling: touch;
         }
         .tutorial-box .tut-title {
             font-size: 28px;
@@ -485,6 +501,7 @@
             font-weight: bold;
             cursor: pointer;
             transition: all 0.2s;
+            touch-action: manipulation;
         }
         .tut-prev {
             background: #444;
@@ -531,6 +548,7 @@
             justify-content: center;
             opacity: 0;
             transition: opacity 0.8s ease;
+            padding: 12px;
         }
         .story-overlay.active {
             opacity: 1;
@@ -549,6 +567,7 @@
             pointer-events: auto;
             max-height: 80vh;
             overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
         .story-box .story-title {
             font-size: 32px;
@@ -575,6 +594,7 @@
             cursor: pointer;
             transition: all 0.3s;
             pointer-events: auto;
+            touch-action: manipulation;
         }
         .story-box .story-close:hover {
             transform: scale(1.05);
@@ -594,6 +614,9 @@
             align-items: center;
             justify-content: center;
             z-index: 1000;
+            padding: 20px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
         .start-title {
             font-size: 72px;
@@ -606,6 +629,7 @@
             font-size: 24px;
             color: #e0e1dd;
             margin-bottom: 40px;
+            text-align: center;
         }
         .start-btn {
             padding: 20px 60px;
@@ -618,16 +642,22 @@
             cursor: pointer;
             transition: all 0.3s;
             margin: 10px;
+            touch-action: manipulation;
+            box-shadow: 0 4px 20px rgba(255, 193, 7, 0.25);
         }
         .start-btn:hover {
             transform: scale(1.05);
             box-shadow: 0 0 30px rgba(255, 193, 7, 0.5);
+        }
+        .start-btn:active {
+            transform: scale(0.97);
         }
         .controls-info {
             margin-top: 40px;
             color: #778da9;
             text-align: center;
             line-height: 2;
+            font-size: 15px;
         }
 
         /* ===== 暂停界面 ===== */
@@ -646,6 +676,7 @@
             z-index: 900;
             padding: 20px;
             overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
         #pauseOverlay.active {
             display: flex;
@@ -660,6 +691,7 @@
             max-height: 92vh;
             overflow-y: auto;
             box-shadow: 0 0 60px rgba(255, 193, 7, 0.15);
+            -webkit-overflow-scrolling: touch;
         }
         .pause-title {
             font-size: 42px;
@@ -726,6 +758,7 @@
             color: #aaa;
             font-size: 12px;
             position: relative;
+            touch-action: manipulation;
         }
         .weapon-arsenal .arsenal-item:hover {
             background: rgba(255, 255, 255, 0.12);
@@ -787,6 +820,7 @@
             transition: all 0.3s;
             cursor: pointer;
             position: relative;
+            touch-action: manipulation;
         }
         .backpack-slot.filled {
             border-color: #ffc107;
@@ -943,6 +977,7 @@
             cursor: pointer;
             transition: all 0.2s;
             font-size: 13px;
+            touch-action: manipulation;
         }
         .bg-option:hover {
             background: rgba(255, 255, 255, 0.12);
@@ -988,6 +1023,7 @@
             flex-shrink: 0;
             border: none;
             padding: 0;
+            touch-action: manipulation;
         }
         .cheat-toggle.active {
             background: #ff6b6b;
@@ -1056,6 +1092,7 @@
             flex-shrink: 0;
             border: none;
             padding: 0;
+            touch-action: manipulation;
         }
         .mute-toggle.active {
             background: #8ab4f8;
@@ -1099,6 +1136,7 @@
             cursor: pointer;
             transition: all 0.2s;
             font-weight: bold;
+            touch-action: manipulation;
         }
         .btn-resume {
             background: linear-gradient(135deg, #ffc107, #ff9800);
@@ -1128,6 +1166,7 @@
             z-index: 100;
             opacity: 0;
             transition: opacity 0.3s;
+            pointer-events: none;
         }
         .accuracy-bar {
             width: 100%;
@@ -1160,14 +1199,20 @@
             margin-top: 4px;
         }
 
-        .pause-container::-webkit-scrollbar {
+        .pause-container::-webkit-scrollbar,
+        .tutorial-box::-webkit-scrollbar,
+        .story-box::-webkit-scrollbar {
             width: 6px;
         }
-        .pause-container::-webkit-scrollbar-track {
+        .pause-container::-webkit-scrollbar-track,
+        .tutorial-box::-webkit-scrollbar-track,
+        .story-box::-webkit-scrollbar-track {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 3px;
         }
-        .pause-container::-webkit-scrollbar-thumb {
+        .pause-container::-webkit-scrollbar-thumb,
+        .tutorial-box::-webkit-scrollbar-thumb,
+        .story-box::-webkit-scrollbar-thumb {
             background: #ffc107;
             border-radius: 3px;
         }
@@ -1206,6 +1251,7 @@
             border-radius: 8px;
             border: 1px solid #444;
             font-family: 'Segoe UI', sans-serif;
+            touch-action: manipulation;
         }
         .mute-icon:hover {
             opacity: 1;
@@ -1244,6 +1290,7 @@
             color: #aaa;
             transition: all 0.2s;
             border: 1px solid transparent;
+            touch-action: manipulation;
         }
         .ammo-type-selector .ammo-option:hover {
             background: rgba(255, 255, 255, 0.08);
@@ -1317,6 +1364,7 @@
             cursor: pointer;
             transition: all 0.2s;
             border: 1px solid transparent;
+            touch-action: manipulation;
         }
         .backpack-indicator .bp-item.active {
             color: #ffc107;
@@ -1331,6 +1379,457 @@
             color: #666;
             margin-right: 4px;
         }
+
+        /* ============================================================
+           移动端触控按钮
+           ============================================================ */
+        .mobile-btn {
+            position: fixed;
+            z-index: 200;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.55);
+            border: 2px solid rgba(255, 193, 7, 0.7);
+            color: #ffc107;
+            font-size: 26px;
+            font-family: 'Segoe UI', sans-serif;
+            cursor: pointer;
+            touch-action: none;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+            transition: transform 0.1s, background 0.15s;
+        }
+        .mobile-btn:active {
+            transform: scale(0.9);
+            background: rgba(255, 193, 7, 0.3);
+        }
+        .mobile-btn.active {
+            background: rgba(255, 193, 7, 0.45);
+            border-color: #ffc107;
+            color: #fff;
+        }
+
+        .mobile-pause-btn {
+            width: 52px;
+            height: 52px;
+            font-size: 22px;
+        }
+        .mobile-reload-btn {
+            width: 72px;
+            height: 72px;
+            font-size: 30px;
+        }
+        .mobile-scope-btn {
+            width: 60px;
+            height: 60px;
+            font-size: 26px;
+        }
+        .mobile-zoom-btn {
+            width: 56px;
+            height: 40px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        /* ============================================================
+           触屏 / 小屏适配
+           ============================================================ */
+        @media (max-width: 900px), (pointer: coarse) {
+            body {
+                cursor: default;
+            }
+
+            .mobile-btn {
+                display: flex;
+            }
+
+            /* 开始界面 */
+            .start-title {
+                font-size: 40px;
+                margin-bottom: 12px;
+            }
+            .start-subtitle {
+                font-size: 15px;
+                margin-bottom: 26px;
+                padding: 0 10px;
+                line-height: 1.5;
+            }
+            .start-btn {
+                padding: 16px 46px;
+                font-size: 22px;
+            }
+            .controls-info {
+                margin-top: 24px;
+                font-size: 12px;
+                line-height: 1.9;
+                padding: 0 12px;
+            }
+
+            /* 静音图标 */
+            .mute-icon {
+                top: 10px;
+                left: 10px;
+                font-size: 20px;
+                padding: 5px 9px;
+            }
+
+            /* 暂停按钮（顶部左侧，静音图标右边） */
+            .mobile-pause-btn {
+                top: 12px;
+                left: 66px;
+            }
+
+            /* 统计面板 —— 右上角缩小 */
+            .stats-panel {
+                top: 8px;
+                right: 8px;
+                padding: 8px 10px;
+                min-width: 132px;
+                border-radius: 8px;
+                pointer-events: none;
+                transform: scale(0.92);
+                transform-origin: top right;
+            }
+            .stats-panel h3 {
+                font-size: 13px !important;
+                margin-bottom: 5px !important;
+                letter-spacing: 1px !important;
+            }
+            .stats-panel .text-white {
+                font-size: 11px !important;
+                line-height: 1.5 !important;
+            }
+            .stats-panel .score-display {
+                font-size: 15px;
+            }
+            .stats-panel .accuracy-bar {
+                height: 5px;
+                margin-top: 2px;
+            }
+
+            /* 弹药显示 —— 左下角 */
+            .ammo-display {
+                bottom: 10px;
+                left: 10px;
+                right: auto;
+                padding: 8px 14px;
+                text-align: left;
+                border-radius: 10px;
+                pointer-events: none;
+            }
+            .ammo-display #weaponName {
+                font-size: 12px !important;
+                margin-bottom: 2px !important;
+            }
+            .ammo-count {
+                font-size: 30px;
+            }
+            .ammo-reserve {
+                font-size: 17px;
+            }
+            .ammo-inf {
+                font-size: 30px;
+            }
+            #reloadHint {
+                font-size: 11px;
+                margin-top: 2px;
+            }
+            #cheatAmmoHint,
+            #cooldownHint {
+                font-size: 11px;
+            }
+
+            /* 换弹按钮 —— 右下角 */
+            .mobile-reload-btn {
+                right: 16px;
+                bottom: 18px;
+            }
+
+            /* 开镜按钮 —— 换弹按钮左侧 */
+            .mobile-scope-btn {
+                right: 100px;
+                bottom: 24px;
+            }
+
+            /* 缩放按钮 —— 换弹按钮上方 */
+            .mobile-zoom-btn {
+                right: 24px;
+                bottom: 100px;
+            }
+
+            /* 背包指示器 —— 底部中间，缩小 */
+            .backpack-indicator {
+                bottom: 8px;
+                padding: 4px 10px;
+                gap: 6px;
+                border-radius: 10px;
+                transform: scale(0.9);
+            }
+            .backpack-indicator .bp-item {
+                padding: 2px 8px;
+                font-size: 10px;
+            }
+            .backpack-indicator .bp-item .bp-key {
+                font-size: 9px;
+                margin-right: 2px;
+            }
+
+            /* 连击显示 */
+            .streak-display {
+                top: 92px;
+                right: 10px;
+                font-size: 30px;
+            }
+
+            /* 通知 */
+            .notification {
+                font-size: 22px;
+                width: 90%;
+                text-align: center;
+            }
+
+            /* 放大指示器 */
+            .zoom-indicator {
+                bottom: 78px;
+                right: 12px;
+                font-size: 14px;
+                padding: 4px 10px;
+            }
+
+            /* 弹药类型选择器 —— 小屏改为紧凑横向，放在左上 */
+            .ammo-type-selector {
+                bottom: auto;
+                top: 58px;
+                left: 10px;
+                right: auto;
+                flex-direction: row;
+                padding: 4px 6px;
+                gap: 2px;
+                min-width: auto;
+                border-radius: 8px;
+                transform: scale(0.85);
+                transform-origin: top left;
+            }
+            .ammo-type-selector .label {
+                display: none;
+            }
+            .ammo-type-selector .ammo-option {
+                font-size: 10px;
+                padding: 2px 6px;
+                white-space: nowrap;
+            }
+            .ammo-type-selector .ammo-option .ammo-icon {
+                font-size: 11px;
+            }
+
+            /* 冷却条 */
+            .cooldown-bar-container {
+                bottom: 150px;
+                padding: 6px 12px;
+            }
+            .cooldown-bar-container .cd-label {
+                font-size: 15px;
+            }
+
+            /* 换弹条 */
+            .reload-bar {
+                bottom: 25%;
+                width: 240px;
+                height: 16px;
+            }
+
+            /* 解锁动画 */
+            .unlock-box {
+                padding: 26px 30px;
+            }
+            .unlock-box .unlock-icon {
+                font-size: 56px;
+            }
+            .unlock-box .unlock-title {
+                font-size: 22px;
+                letter-spacing: 1px;
+            }
+            .unlock-box .unlock-sub {
+                font-size: 14px;
+            }
+
+            /* 故事 */
+            .story-box {
+                padding: 22px 22px;
+            }
+            .story-box .story-title {
+                font-size: 22px;
+                letter-spacing: 1px;
+            }
+            .story-box .story-text {
+                font-size: 15px;
+                line-height: 1.7;
+            }
+            .story-box .story-close {
+                padding: 10px 26px;
+                font-size: 16px;
+                width: 100%;
+            }
+
+            /* 教程 */
+            .tutorial-box {
+                padding: 20px 18px;
+                width: 94%;
+            }
+            .tutorial-box .tut-title {
+                font-size: 20px;
+            }
+            .tutorial-box .tut-content {
+                font-size: 14px;
+                line-height: 1.7;
+            }
+            .tutorial-box .tut-nav button {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+
+            /* 暂停面板 */
+            .pause-container {
+                padding: 18px 16px;
+                border-radius: 12px;
+            }
+            .pause-title {
+                font-size: 28px;
+                letter-spacing: 2px;
+                margin-bottom: 14px;
+            }
+            .pause-section {
+                padding: 12px 12px;
+            }
+            .pause-section h3 {
+                font-size: 16px;
+                margin-bottom: 8px;
+            }
+            .pause-grid {
+                gap: 10px;
+            }
+            .weapon-arsenal .arsenal-grid {
+                grid-template-columns: repeat(auto-fill, minmax(66px, 1fr));
+                gap: 5px;
+            }
+            .weapon-arsenal .arsenal-item {
+                padding: 5px 3px;
+                font-size: 10px;
+            }
+            .weapon-arsenal .arsenal-item .w-icon {
+                font-size: 15px;
+            }
+            .weapon-arsenal .arsenal-item .w-name {
+                font-size: 9px;
+            }
+            .backpack-slot {
+                width: 58px;
+                height: 58px;
+                font-size: 10px;
+            }
+            .backpack-slot .slot-weapon-name {
+                font-size: 10px;
+            }
+            .pause-actions .btn {
+                padding: 12px 22px;
+                font-size: 15px;
+                flex: 1;
+                min-width: 120px;
+            }
+            .pause-actions {
+                gap: 10px;
+            }
+            .cheat-row,
+            .mute-row {
+                gap: 8px;
+            }
+            .cheat-row label,
+            .mute-row label {
+                font-size: 13px;
+            }
+            .setting-row label {
+                font-size: 13px;
+                min-width: 54px;
+            }
+            .setting-row .value-display {
+                font-size: 13px;
+            }
+            .bg-option {
+                padding: 5px 10px;
+                font-size: 12px;
+            }
+            .cheat-hint {
+                font-size: 11px;
+            }
+
+            /* 横屏小高度时进一步压缩 */
+            @media (max-height: 500px) {
+                .stats-panel {
+                    transform: scale(0.78);
+                    transform-origin: top right;
+                }
+                .ammo-display {
+                    padding: 6px 10px;
+                }
+                .ammo-count {
+                    font-size: 24px;
+                }
+                .backpack-indicator {
+                    transform: scale(0.78);
+                }
+                .mobile-reload-btn {
+                    width: 62px;
+                    height: 62px;
+                    font-size: 26px;
+                }
+                .mobile-scope-btn {
+                    width: 52px;
+                    height: 52px;
+                    font-size: 22px;
+                }
+            }
+        }
+
+        /* 超小屏幕（手机竖屏） */
+        @media (max-width: 420px) {
+            .start-title {
+                font-size: 32px;
+            }
+            .stats-panel {
+                transform: scale(0.82);
+                transform-origin: top right;
+            }
+            .mobile-pause-btn {
+                left: 58px;
+                width: 46px;
+                height: 46px;
+                font-size: 19px;
+            }
+            .mobile-reload-btn {
+                width: 64px;
+                height: 64px;
+                font-size: 26px;
+            }
+            .mobile-scope-btn {
+                width: 54px;
+                height: 54px;
+                font-size: 23px;
+                right: 88px;
+            }
+            .mobile-zoom-btn {
+                right: 20px;
+                bottom: 92px;
+                width: 50px;
+                height: 36px;
+                font-size: 13px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1341,7 +1840,8 @@
         <p class="start-subtitle typewriter-font">"多场景战术射击 · 武器解锁成长 · 真实弹道模拟 · 十种武器"</p>
         <button class="start-btn police-font" onclick="startGame()">开始训练</button>
         <div class="controls-info">
-            <p><strong>鼠标左键</strong> 射击 &nbsp;|&nbsp; <strong>R</strong> 换弹 &nbsp;|&nbsp; <strong>ESC / P</strong> 暂停</p>
+            <p><strong>📱 触屏：</strong>点按/拖动屏幕瞄准并开火</p>
+            <p><strong>🖱 鼠标左键</strong> 射击 &nbsp;|&nbsp; <strong>R</strong> 换弹 &nbsp;|&nbsp; <strong>ESC / P</strong> 暂停</p>
             <p><strong>右键（AWM）</strong> 开镜 &nbsp;|&nbsp; <strong>滚轮（开镜时）</strong> 调整倍数</p>
             <p><strong>1-0</strong> 切换武器 &nbsp;|&nbsp; <strong>E</strong> 开/关镜(AWM)</p>
             <p><strong>🎒 背包：F1/F2/F3 切换背包武器</strong></p>
@@ -1355,6 +1855,18 @@
 
     <!-- ===== 静音图标 ===== -->
     <div id="muteIcon" class="mute-icon" onclick="toggleMuteUI()">🔊</div>
+
+    <!-- ===== 移动端：暂停按钮 ===== -->
+    <div id="mobilePauseBtn" class="mobile-btn mobile-pause-btn" title="暂停">⏸</div>
+
+    <!-- ===== 移动端：换弹按钮 ===== -->
+    <div id="mobileReloadBtn" class="mobile-btn mobile-reload-btn" title="换弹">🔄</div>
+
+    <!-- ===== 移动端：开镜按钮（仅狙击枪显示） ===== -->
+    <div id="mobileScopeBtn" class="mobile-btn mobile-scope-btn" title="开镜">🔭</div>
+
+    <!-- ===== 移动端：缩放按钮（开镜时显示） ===== -->
+    <div id="mobileZoomBtn" class="mobile-btn mobile-zoom-btn" title="切换倍率">2.0x</div>
 
     <!-- ===== 伤害叠加 ===== -->
     <div id="damageOverlay" class="damage-overlay"></div>
@@ -2078,15 +2590,33 @@
         const unlockSub = document.getElementById('unlockSub');
         const unlockConfettiContainer = document.getElementById('unlockConfettiContainer');
 
+        // 移动端按钮
+        const mobilePauseBtn = document.getElementById('mobilePauseBtn');
+        const mobileReloadBtn = document.getElementById('mobileReloadBtn');
+        const mobileScopeBtn = document.getElementById('mobileScopeBtn');
+        const mobileZoomBtn = document.getElementById('mobileZoomBtn');
+
         // ============================================================
         // 6. Canvas 尺寸
         // ============================================================
         function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            const w = window.innerWidth;
+            const h = window.innerHeight;
+            canvas.width = w;
+            canvas.height = h;
+            canvas.style.width = w + 'px';
+            canvas.style.height = h + 'px';
+            // 边界保护：鼠标/准星如果越界则夹回来
+            if (game.mouseX > w) game.mouseX = w / 2;
+            if (game.mouseY > h) game.mouseY = h / 2;
+            crosshairEl.style.left = game.mouseX + 'px';
+            crosshairEl.style.top = game.mouseY + 'px';
         }
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
+        window.addEventListener('orientationchange', function() {
+            setTimeout(resizeCanvas, 250);
+        });
 
         // ============================================================
         // 7. 音效系统
@@ -2567,7 +3097,8 @@
             container.innerHTML = '';
             const colors = ['#ff6b6b', '#ffd93d', '#6bcb77', '#4d96ff', '#ff6bb5', '#ffaa33', '#33ccff', '#ff3366'];
             const shapes = ['■', '●', '▲', '★', '♦', '♥'];
-            for (let i = 0; i < 120; i++) {
+            const count = window.innerWidth < 800 ? 70 : 120;
+            for (let i = 0; i < count; i++) {
                 const el = document.createElement('div');
                 el.className = 'unlock-confetti';
                 const size = 6 + Math.random() * 14;
@@ -2597,9 +3128,20 @@
         }
 
         // ============================================================
-        // 11. 鼠标 / 键盘 / 滚轮
+        // 11. 鼠标 / 键盘 / 滚轮 / 触控
         // ============================================================
+        const isTouchDevice = ('ontouchstart' in window) ||
+            (navigator.maxTouchPoints > 0) ||
+            (window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
+
+        let touchActive = false;
+        let activeTouchId = null;
+        let lastTouchTime = 0;
+
+        // ---------- 鼠标 ----------
         document.addEventListener('mousemove', (e) => {
+            // 触屏设备最近有触控输入时忽略鼠标
+            if (touchActive || (Date.now() - lastTouchTime < 800)) return;
             game.rawMouseX = e.clientX;
             game.rawMouseY = e.clientY;
             const sens = CONFIG.sensitivity || 1.0;
@@ -2613,6 +3155,7 @@
         });
 
         document.addEventListener('mousedown', (e) => {
+            if (touchActive || (Date.now() - lastTouchTime < 800)) return;
             if (e.button === 0) {
                 game.mouseDown = true;
                 if (game.running && !game.paused && !game.isReloading && !game.showingStory) shoot();
@@ -2625,6 +3168,7 @@
         });
 
         document.addEventListener('mouseup', (e) => {
+            if (touchActive || (Date.now() - lastTouchTime < 800)) return;
             if (e.button === 0) game.mouseDown = false;
             if (e.button === 2) {
                 game.rightMouseDown = false;
@@ -2645,8 +3189,80 @@
             zoomIndicator.textContent = '🔍 ' + game.awmZoom.toFixed(1) + 'x';
             zoomIndicator.classList.add('active');
             w.scopeZoom = game.awmZoom;
+            updateMobileZoomText();
         }, { passive: false });
 
+        // ---------- 触控瞄准/射击 ----------
+        function updateAimFromTouch(touch) {
+            const x = Math.max(0, Math.min(window.innerWidth, touch.clientX));
+            const y = Math.max(0, Math.min(window.innerHeight, touch.clientY));
+            game.rawMouseX = x;
+            game.rawMouseY = y;
+            game.mouseX = x;
+            game.mouseY = y;
+            crosshairEl.style.left = x + 'px';
+            crosshairEl.style.top = y + 'px';
+        }
+
+        function isBlockingOverlayActive() {
+            if (!game.running) return true;
+            if (game.paused) return true;
+            if (game.showingStory) return true;
+            if (game.tutorialActive) return true;
+            return false;
+        }
+
+        canvas.addEventListener('touchstart', (e) => {
+            if (isBlockingOverlayActive()) return;
+            e.preventDefault();
+            touchActive = true;
+            lastTouchTime = Date.now();
+            const t = e.changedTouches[0];
+            activeTouchId = t.identifier;
+            updateAimFromTouch(t);
+            game.mouseDown = true;
+            if (!game.isReloading) shoot();
+        }, { passive: false });
+
+        canvas.addEventListener('touchmove', (e) => {
+            if (isBlockingOverlayActive()) return;
+            e.preventDefault();
+            for (let i = 0; i < e.changedTouches.length; i++) {
+                const t = e.changedTouches[i];
+                if (t.identifier === activeTouchId) {
+                    updateAimFromTouch(t);
+                    lastTouchTime = Date.now();
+                    break;
+                }
+            }
+        }, { passive: false });
+
+        function endTouchHandler(e) {
+            for (let i = 0; i < e.changedTouches.length; i++) {
+                const t = e.changedTouches[i];
+                if (t.identifier === activeTouchId) {
+                    activeTouchId = null;
+                    game.mouseDown = false;
+                    lastTouchTime = Date.now();
+                }
+            }
+            if (activeTouchId === null) {
+                // 所有触点离开后短暂保持 touchActive
+                setTimeout(() => {
+                    if (activeTouchId === null && (Date.now() - lastTouchTime > 500)) {
+                        touchActive = false;
+                    }
+                }, 600);
+            }
+        }
+        canvas.addEventListener('touchend', endTouchHandler, { passive: false });
+        canvas.addEventListener('touchcancel', endTouchHandler, { passive: false });
+
+        // 阻止页面双指缩放/双击缩放
+        document.addEventListener('gesturestart', (e) => e.preventDefault());
+        document.addEventListener('dblclick', (e) => e.preventDefault());
+
+        // ---------- 键盘 ----------
         document.addEventListener('keydown', (e) => {
             if (!game.running) return;
             const key = e.key.toLowerCase();
@@ -2693,6 +3309,7 @@
                         zoomIndicator.classList.remove('active'); } else if (game.awmScopeActive) { zoomIndicator
                         .classList.add('active');
                         zoomIndicator.textContent = '🔍 ' + game.awmZoom.toFixed(1) + 'x'; }
+                    updateMobileScopeUI();
                 }
             } else if (key === '0') {
                 const wi = 9;
@@ -2716,6 +3333,7 @@
                         zoomIndicator.classList.remove('active'); } else if (game.awmScopeActive) { zoomIndicator
                         .classList.add('active');
                         zoomIndicator.textContent = '🔍 ' + game.awmZoom.toFixed(1) + 'x'; }
+                    updateMobileScopeUI();
                 }
             }
             if (key === 'e') {
@@ -2725,9 +3343,102 @@
                     if (game.awmScopeActive) { zoomIndicator.classList.add('active');
                         zoomIndicator.textContent = '🔍 ' + game.awmZoom.toFixed(1) + 'x'; } else zoomIndicator.classList
                         .remove('active');
+                    updateMobileScopeUI();
                 }
             }
         });
+
+        // ---------- 移动端按钮事件 ----------
+        function bindTap(el, handler) {
+            if (!el) return;
+            el.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                handler();
+            }, { passive: false });
+            el.addEventListener('click', (e) => {
+                // 触屏设备上 click 已被 touchstart 处理；桌面鼠标可用
+                if (isTouchDevice) { e.preventDefault(); return; }
+                handler();
+            });
+        }
+
+        if (mobilePauseBtn) {
+            bindTap(mobilePauseBtn, () => {
+                if (!game.running) return;
+                if (game.showingStory) return;
+                togglePause();
+            });
+        }
+
+        if (mobileReloadBtn) {
+            bindTap(mobileReloadBtn, () => {
+                if (!game.running || game.paused || game.showingStory) return;
+                if (game.isReloading) return;
+                if (game.cheatInfiniteAmmo) { showNotification('⚡ 无限弹药，无需换弹'); return; }
+                startReload();
+            });
+        }
+
+        if (mobileScopeBtn) {
+            bindTap(mobileScopeBtn, () => {
+                if (!game.running || game.paused || game.showingStory) return;
+                const w = WEAPONS[game.currentWeapon];
+                if (!w || !w.isSniper) return;
+                toggleAWMScope(!game.awmScopeActive);
+                updateMobileScopeUI();
+            });
+        }
+
+        if (mobileZoomBtn) {
+            bindTap(mobileZoomBtn, () => {
+                if (!game.running || game.paused) return;
+                const w = WEAPONS[game.currentWeapon];
+                if (!w || !w.isSniper || !game.awmScopeActive) return;
+                const steps = [2.0, 3.0, 4.0, 6.0, 8.0];
+                let idx = steps.indexOf(game.awmZoom);
+                if (idx === -1) {
+                    idx = 0;
+                    for (let i = 0; i < steps.length; i++) {
+                        if (steps[i] >= game.awmZoom) { idx = i; break; }
+                    }
+                }
+                idx = (idx + 1) % steps.length;
+                game.awmZoom = steps[idx];
+                w.scopeZoom = game.awmZoom;
+                zoomIndicator.textContent = '🔍 ' + game.awmZoom.toFixed(1) + 'x';
+                zoomIndicator.classList.add('active');
+                updateMobileZoomText();
+                showNotification('🔍 ' + game.awmZoom.toFixed(1) + 'x');
+            });
+        }
+
+        function updateMobileZoomText() {
+            if (mobileZoomBtn) {
+                mobileZoomBtn.textContent = game.awmZoom.toFixed(1) + 'x';
+            }
+        }
+
+        function updateMobileScopeUI() {
+            if (!mobileScopeBtn || !mobileZoomBtn) return;
+            const w = WEAPONS[game.currentWeapon];
+            const showScope = !!(w && w.isSniper && game.running && !game.paused && !game.showingStory);
+            if (showScope) {
+                mobileScopeBtn.style.display = 'flex';
+                if (game.awmScopeActive) {
+                    mobileScopeBtn.classList.add('active');
+                    mobileZoomBtn.style.display = 'flex';
+                    mobileZoomBtn.textContent = game.awmZoom.toFixed(1) + 'x';
+                } else {
+                    mobileScopeBtn.classList.remove('active');
+                    mobileZoomBtn.style.display = 'none';
+                }
+            } else {
+                mobileScopeBtn.style.display = 'none';
+                mobileScopeBtn.classList.remove('active');
+                mobileZoomBtn.style.display = 'none';
+            }
+        }
 
         // ============================================================
         // 12. 武器切换 & 换弹
@@ -2760,6 +3471,7 @@
             updateUI();
             updateBackpackUI();
             updateCrosshairStyle();
+            updateMobileScopeUI();
             showNotification('🔫 ' + WEAPONS[index].chineseName);
         }
 
@@ -2800,9 +3512,11 @@
         function toggleAWMScope(active) {
             const w = WEAPONS[game.currentWeapon];
             if (!w || !w.isSniper) { game.awmScopeActive = false;
-                updateCrosshairStyle(); return; }
+                updateCrosshairStyle();
+                updateMobileScopeUI(); return; }
             if (game.paused || !game.running) { game.awmScopeActive = false;
-                updateCrosshairStyle(); return; }
+                updateCrosshairStyle();
+                updateMobileScopeUI(); return; }
             game.awmScopeActive = active;
             updateCrosshairStyle();
             if (active) { document.body.style.cursor = 'none';
@@ -2810,6 +3524,7 @@
                 zoomIndicator.textContent = '🔍 ' + game.awmZoom.toFixed(1) + 'x'; } else { document.body.style.cursor =
                     'crosshair';
                 zoomIndicator.classList.remove('active'); }
+            updateMobileScopeUI();
         }
 
         function updateCrosshairStyle() {
@@ -3008,6 +3723,7 @@
             updateBackpackUI();
             updateWeaponDisplay();
             updateCrosshairStyle();
+            updateMobileScopeUI();
             document.querySelectorAll('.backpack-indicator .bp-item').forEach(el => {
                 const idx = parseInt(el.dataset.slot);
                 el.classList.toggle('active', idx === slotIdx);
@@ -3855,7 +4571,7 @@
         function initTutorial() {
             game.tutorialPages = [{
                 title: '🎯 欢迎！',
-                content: `欢迎来到射击训练模拟·终极完整版 v2.0！<br><br>本教程将引导你了解所有新功能。<br>点击"下一步"继续。`
+                content: `欢迎来到射击训练模拟·终极完整版 v2.0！<br><br>本教程将引导你了解所有新功能。<br><b>📱 触屏玩法：点按/拖动屏幕瞄准并开火，右下角按钮换弹，右上角按钮暂停。</b><br>点击"下一步"继续。`
             }, {
                 title: '🌍 场景与敌人',
                 content: `每个场景都有独特的敌人和机制：<br>
@@ -3873,7 +4589,7 @@
                         <ul>
                             <li>在暂停界面点击武器库中的武器加入背包。</li>
                             <li>点击背包中的武器可移除。</li>
-                            <li><b>F1-F3</b> 快速切换背包武器。</li>
+                            <li><b>F1-F3</b> 快速切换背包武器（PC）。</li>
                             <li>按数字键1-0切换武器库武器（不在背包中）。</li>
                         </ul>`
             }, {
@@ -3921,7 +4637,7 @@
                         </ul>`
             }, {
                 title: '🎉 开始战斗！',
-                content: `你已经掌握了所有新特性！<br><br>选择场景和武器，开始射击吧！<br><b>快捷键：</b> 1-0切换武器，R换弹，F1-F3背包，ESC/P暂停，E开/关镜(AWM)，S静音。`
+                content: `你已经掌握了所有新特性！<br><br>选择场景和武器，开始射击吧！<br><b>快捷键（PC）：</b> 1-0切换武器，R换弹，F1-F3背包，ESC/P暂停，E开/关镜(AWM)，S静音。<br><b>📱 触屏：</b>点按/拖动瞄准开火，右下角🔄换弹，右上角⏸暂停。`
             }];
             game.tutorialStep = 0;
             showTutorialPage(0);
@@ -3995,11 +4711,13 @@
             storyText.textContent = story.text;
             storyOverlay.classList.add('active');
             game.showingStory = true;
+            updateMobileScopeUI();
         }
 
         function closeStory() {
             storyOverlay.classList.remove('active');
             game.showingStory = false;
+            updateMobileScopeUI();
             if (!game.tutorialActive && !localStorage.getItem('tutorialShown')) {
                 setTimeout(() => { initTutorial();
                     localStorage.setItem('tutorialShown', 'true'); }, 300);
@@ -4381,6 +5099,7 @@
         // ============================================================
         function updatePauseWeaponGrid() {
             const grid = document.getElementById('pauseWeaponGrid');
+            if (!grid) return;
             grid.innerHTML = '';
             WEAPONS.forEach((w, idx) => {
                 const inBackpack = game.backpack.includes(idx);
@@ -4421,6 +5140,7 @@
                             zoomIndicator.textContent = '🔍 ' + game.awmZoom.toFixed(1) + 'x'; }
                         updatePauseWeaponGrid();
                         updateBackpackUI();
+                        updateMobileScopeUI();
                     }
                 };
                 grid.appendChild(card);
@@ -4487,12 +5207,15 @@
                 updateMuteUI(soundSystem.muted);
                 toggleAWMScope(false);
                 zoomIndicator.classList.remove('active');
+                updateMobileScopeUI();
+                game.mouseDown = false;
             } else {
                 pauseOverlay.classList.remove('active');
                 applyPauseSettings();
                 const w = WEAPONS[game.currentWeapon];
                 if (w && w.isSniper && game.awmScopeActive) { zoomIndicator.classList.add('active');
                     zoomIndicator.textContent = '🔍 ' + game.awmZoom.toFixed(1) + 'x'; }
+                updateMobileScopeUI();
             }
         }
 
@@ -4601,6 +5324,7 @@
             game.trenchFlagBearerCount = 0;
             game.backpack = [];
             game.currentBackpackSlot = -1;
+            game.mouseDown = false;
             WEAPONS.forEach(w => {
                 w.isUnlocked = (w.unlockScore === 0);
                 w.currentAmmo = w.magSize;
@@ -4631,6 +5355,7 @@
             updateBackpackUI();
             updateArsenalUI();
             updateCrosshairStyle();
+            updateMobileScopeUI();
             if (game.bgType === 'snow') initSnowflakes();
             if (game.bgType !== 'snow' && game.rainIntensity > 0) { initRain();
                 soundSystem.startRain(game.rainIntensity); }
@@ -4642,7 +5367,6 @@
         // ============================================================
         // 25-27. 绘制 — 背景、目标、粒子、弹壳、武器、AWM（完整实现）
         // ============================================================
-        // 以下为完整的绘制函数（为节省篇幅，实际在最终输出中完整包含）
 
         function drawBackground() {
             const w = canvas.width,
@@ -5071,7 +5795,8 @@
 
         function initSnowflakes() {
             game.snowflakes = [];
-            for (let i = 0; i < 120; i++) {
+            const count = window.innerWidth < 800 ? 70 : 120;
+            for (let i = 0; i < count; i++) {
                 game.snowflakes.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
@@ -6112,18 +6837,28 @@
             game.currentBackpackSlot = -1;
             game.trenchSoldierCount = 0;
             game.trenchFlagBearerCount = 0;
+            game.mouseDown = false;
+            game.rawMouseX = window.innerWidth / 2;
+            game.rawMouseY = window.innerHeight / 2;
+            game.mouseX = window.innerWidth / 2;
+            game.mouseY = window.innerHeight / 2;
+            crosshairEl.style.left = game.mouseX + 'px';
+            crosshairEl.style.top = game.mouseY + 'px';
+
             CONFIG.background = 'city';
             CONFIG.targetCount = 8;
             CONFIG.targetSpeed = 1.8;
             CONFIG.sensitivity = 1.0;
             CONFIG.crosshairColor = '#ffffff';
-            CONFIG.crosshairSize = 30;
+            // 触屏设备使用更大的准星
+            CONFIG.crosshairSize = isTouchDevice ? 40 : 30;
             CONFIG.crosshairShape = 'cross';
             CONFIG.volume = 0.8;
             CONFIG.shakeEnabled = true;
             CONFIG.targetColor = '#ff4444';
             CONFIG.cooldownEnabled = true;
             CONFIG.unlockAllWeapons = false;
+
             document.getElementById('cheatToggle').classList.remove('active');
             document.getElementById('cheatStatus').textContent = '关';
             document.getElementById('cheatStatus').className = 'cheat-status';
@@ -6162,6 +6897,8 @@
             if (game.bgType === 'snow') initSnowflakes();
             game.rainDrops = [];
 
+            updateMobileScopeUI();
+
             if (SCENE_STORIES['city']) showSceneStory('city');
 
             console.log('%c🎯 恭喜你发现彩蛋！', 'font-size:24px; color:#ffc107; font-weight:bold;');
@@ -6169,6 +6906,7 @@
             console.log('%c 提示: 连续按 S 键10次触发隐藏特效！', 'font-size:14px; color:#ff6b6b;');
             console.log('%c 精准射手彩蛋: 连续10发全中触发庆祝粒子！', 'font-size:14px; color:#6bcb77;');
             console.log('%c 💾 自动存档已启用，进度会自动保存。', 'font-size:14px; color:#ffd93d;');
+            console.log('%c 📱 移动端支持: 触屏瞄准射击 + 换弹/暂停按钮', 'font-size:14px; color:#8ab4f8;');
 
             showNotification('🎯 终极完整版 v2.0 已启动！自动存档已启用！');
             lastTime = 0;
@@ -6261,9 +6999,16 @@
         updateCrosshairStyle();
         applyCrosshairStyle();
 
+        // 如果页面加载时就检测到触屏设备，把准星调大
+        if (isTouchDevice) {
+            CONFIG.crosshairSize = 40;
+            applyCrosshairStyle();
+        }
+
         console.log('✅ v2.0 完整版启动成功：灵敏度修复 | 开镜血液可见 | 武器解锁系统 | 解锁动画+庆祝粒子 | 自动存档');
         console.log('✅ 战壕旗手 · 城市狙击路径 · 靶场左右分治 · 无人机电子爆炸');
         console.log('✅ 彩蛋：S键连续按10次触发特效，连续10发全中触发精准射手');
+        console.log('✅ 📱 移动端：触屏瞄准射击 + 换弹/暂停按钮 + 自适应屏幕');
         console.log('✅ 💾 存档键：' + CONFIG.saveKey);
         console.log('快捷键: 1-0切换武器 | R换弹 | F1-F3背包 | ESC/P暂停 | E开/关镜(AWM) | S静音');
     </script>
