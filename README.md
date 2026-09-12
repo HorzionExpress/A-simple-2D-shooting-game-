@@ -1,5 +1,10 @@
 # A-simple-2D-shooting-game-
 language：chinese         You can use your ‌Web Page Translation Feature to switch the language you are familar.
+
+
+How to play the game?  downlaod the raw file'index.html'  to your computer,then open the file. enjoy!
+
+
 Hey there! 👋 Welcome to my very first game project — I'm super excited to share this with you!
 
 ‌Precision Shooter‌ is a casual browser-based shooting trainer built entirely with vanilla JavaScript and HTML5 Canvas. No heavy game engines, no fancy frameworks — just pure, messy, hand-crafted code from someone who decided to jump into game dev headfirst. 🎯
